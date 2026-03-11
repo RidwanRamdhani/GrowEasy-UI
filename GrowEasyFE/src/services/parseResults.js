@@ -32,10 +32,10 @@ export function parseSoil(soilData = {}) {
     const nitrogenVal = nLayer ? +(avg(nLayer)).toFixed(1) : null;
     const phVal = phLayer ? +(avg(phLayer)).toFixed(1) : null;
     // Return "Not Available" if null or 0
-    const nitrogen = (!nitrogenVal) ? "Not Available" : nitrogenVal;
-    const ph = (!phVal) ? "Not Available" : phVal;
+    const nitrogen = (!nitrogenVal) ? "N/A" : nitrogenVal;
+    const ph = (!phVal) ? "N/A" : phVal;
     return { nitrogen, ph };
-  } catch { return { nitrogen: "Not Available", ph: "Not Available" }; }
+  } catch { return { nitrogen: "N/A", ph: "N/A" }; }
 }
 export function parseTop3(top3 = {}) {
   return Object.entries(top3).sort((a, b) => b[1] - a[1]).map(([crop, prob]) => ({ name: formatCropName(crop), prob: Math.round(prob * 100) }));
