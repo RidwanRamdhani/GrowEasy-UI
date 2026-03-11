@@ -21,9 +21,21 @@ export function parseSoil(soilData = {}) {
     const layers = soilData?.properties?.layers ?? [];
     const nLayer  = layers.find(l => l.name === "nitrogen");
     const phLayer = layers.find(l => l.name === "phh2o");
-    const avg = (layer) => layer.depths.reduce((s, d) => s + (d.values?.mean ?? 0), 0) / layer.depths.length / layer.unit_measure.d_factor;
-    return { nitrogen: +(avg(nLayer)).toFixed(1), ph: +avg(phLayer).toFixed(1) };
-  } catch { return { nitrogen: 51, ph: 6.5 }; }
+    const avg = (layer) => {
+      if (!layer?.depths?.length) return null;
+      const values = layer.depths.map(d => d.values?.mean);
+      // Check if any value is null or undefined
+      if (values.some(v => v === null || v === undefined)) return null;
+      const sum = values.reduce((s, v) => s + v, 0);
+      return sum / layer.depths.length / (layer.unit_measure?.d_factor || 1);
+    };
+    const nitrogenVal = nLayer ? +(avg(nLayer)).toFixed(1) : null;
+    const phVal = phLayer ? +(avg(phLayer)).toFixed(1) : null;
+    // Return "Not Available" if null or 0
+    const nitrogen = (!nitrogenVal) ? "Not Available" : nitrogenVal;
+    const ph = (!phVal) ? "Not Available" : phVal;
+    return { nitrogen, ph };
+  } catch { return { nitrogen: "Not Available", ph: "Not Available" }; }
 }
 export function parseTop3(top3 = {}) {
   return Object.entries(top3).sort((a, b) => b[1] - a[1]).map(([crop, prob]) => ({ name: formatCropName(crop), prob: Math.round(prob * 100) }));
