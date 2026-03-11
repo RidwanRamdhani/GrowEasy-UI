@@ -46,3 +46,7 @@ GrowEasy is a web platform for agricultural analysis, providing tools for soil a
    ```bash
    npm run preview
    ```
+
+## License
+
+This project is licensed under the GPL-3.0 license - see the [LICENSE](LICENSE) file for details.
