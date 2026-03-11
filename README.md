@@ -1,7 +1,7 @@
 # GrowEasy
 
 ## Quick Summary
-GrowEasy is a Biopunk/Organic-Digital themed platform for agricultural analysis, providing tools for soil and weather analysis, AI-powered insights, and history tracking.
+GrowEasy is a web platform for agricultural analysis, providing tools for soil and weather analysis, AI-powered insights, and history tracking.
 
 ## Key Features
 - **Landing Page**: Hero orb with 3-ring pulse animation, parallax mouse tracking, platform statistics, and CTA.
