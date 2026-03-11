@@ -47,6 +47,10 @@ GrowEasy is a web platform for agricultural analysis, providing tools for soil a
    npm run preview
    ```
 
+## Related Projects
+- **Backend Service**: GrowEasy https://github.com/RidwanRamdhani/GrowEasy
+- **ML Service**: Custom ML Service (Prediction) https://github.com/Rayya12/Hackathon-AI
+
 ## License
 
 This project is licensed under the GPL-3.0 license - see the [LICENSE](LICENSE) file for details.
