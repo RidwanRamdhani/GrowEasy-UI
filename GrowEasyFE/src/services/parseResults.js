@@ -22,7 +22,7 @@ export function parseSoil(soilData = {}) {
     const nLayer  = layers.find(l => l.name === "nitrogen");
     const phLayer = layers.find(l => l.name === "phh2o");
     const avg = (layer) => layer.depths.reduce((s, d) => s + (d.values?.mean ?? 0), 0) / layer.depths.length / layer.unit_measure.d_factor;
-    return { nitrogen: +(avg(nLayer) * 1.3 * 30 * 0.1).toFixed(1), ph: +avg(phLayer).toFixed(1) };
+    return { nitrogen: +(avg(nLayer)).toFixed(1), ph: +avg(phLayer).toFixed(1) };
   } catch { return { nitrogen: 51, ph: 6.5 }; }
 }
 export function parseTop3(top3 = {}) {

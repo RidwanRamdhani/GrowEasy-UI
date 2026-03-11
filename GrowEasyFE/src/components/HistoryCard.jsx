@@ -175,7 +175,7 @@ export default function HistoryCard({ item, isOpen, onToggle }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(100px,1fr))", gap: 8 }}>
             {[
               ["pH",         item.ph,          ""],
-              ["Nitrogen",   item.nitrogen,     " kg/ha"],
+              ["Nitrogen",   item.nitrogen,     " g/kg"],
               ["Temp",       item.temperature,  "°C"],
               ["Humidity",   item.humidity,     "%"],
               ["Rainfall",   item.rainfall,     " mm/d"],

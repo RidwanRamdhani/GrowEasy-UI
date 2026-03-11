@@ -265,7 +265,7 @@ export default function AnalyzePage({ onNav }) {
                 <div className="metrics-grid">
                   {[
                     ["SOIL pH",     result.ph,          ""],
-                    ["NITROGEN",    result.nitrogen,     " kg/ha"],
+                    ["NITROGEN",    result.nitrogen,     " g/kg"],
                     ["TEMPERATURE", result.temperature,  "°C"],
                     ["HUMIDITY",    result.humidity,     "%"],
                     ["RAINFALL",    result.rainfall,     " mm/d"],

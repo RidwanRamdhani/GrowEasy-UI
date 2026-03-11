@@ -98,7 +98,7 @@ function LatestAnalysisPanel({ latest, chatHistory, onNav }) {
 
           {/* Metrics */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
-            {[["pH", latest.ph, ""], ["Nitrogen", latest.nitrogen, " kg/ha"], ["Temp", latest.temperature, "°C"], ["Humidity", latest.humidity, "%"], ["Rainfall", latest.rainfall, " mm/d"], ["Confidence", latest.probability, "%"]].map(([l, v, u]) => (
+            {[["pH", latest.ph, ""], ["Nitrogen", latest.nitrogen, " g/kg"], ["Temp", latest.temperature, "°C"], ["Humidity", latest.humidity, "%"], ["Rainfall", latest.rainfall, " mm/d"], ["Confidence", latest.probability, "%"]].map(([l, v, u]) => (
               <div key={l} style={{ background: "var(--surface2)", borderRadius: 8, padding: "9px 11px", border: "1px solid var(--border)" }}>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--text-muted)", marginBottom: 4, letterSpacing: ".06em" }}>{l.toUpperCase()}</div>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: 14, fontWeight: 700, color: "var(--green-bright)" }}>{v}{u}</div>
