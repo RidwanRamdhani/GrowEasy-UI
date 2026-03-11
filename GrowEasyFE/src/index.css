@@ -1,0 +1,217 @@
+/* 1. IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+
+:root {
+  --bg: #f0f7ee;          
+  --surface: #ffffff;     
+  --surface2: #e4f0e0;    
+  --border: #cde0c9;      
+  --green: #4db33d;       
+  --green-bright: #2ecc71; 
+  --amber: #f1c40f;       
+  --amber-dim: #9b870c;
+  --text: #1a2e1a;        
+  --text-dim: #4a634a;    
+  --text-muted: #8ca38c;  
+  --accent: #82e0aa;      
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'Lora', serif;
+  
+  /* Reset Vite Defaults */
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;    
+}
+
+/* 3. RESET & BASE STYLES */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* 5. ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; } 50% { opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); }
+}
+@keyframes dot-pulse {
+  0%, 80%, 100% { transform: scale(0); opacity: 0; }
+  40%           { transform: scale(1); opacity: 1; }
+}
+
+/* 6. LAYOUT COMPONENTS */
+.shell {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 16px;
+  height: 100%;
+  overflow-y: auto;
+  transition: width 0.25s ease;
+}
+
+.sidebar-label { white-space: nowrap; overflow: hidden; }
+
+.main-scroll {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-inner {
+  flex: 1;
+  padding: clamp(20px, 3.5vw, 48px);
+  width: 100%;
+}
+
+.landing-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.landing-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(14px, 2.5vw, 24px) clamp(20px, 5vw, 64px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.landing-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 6vw, 100px) clamp(20px, 5vw, 64px);
+}
+
+/* 7. GRIDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 2vw, 20px);
+  margin-bottom: clamp(16px, 2.5vw, 28px);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(8px, 1.5vw, 14px);
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* 8. FORM ELEMENTS */
+input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-top: 6px;
+}
+
+input:focus {
+  border-color: #4db33d;
+  box-shadow: 0 0 0 3px rgba(77, 179, 61, 0.2); 
+}
+
+button { 
+  cursor: pointer; 
+  transition: opacity 0.15s; 
+  border: none;
+  background: none;
+}
+
+button:hover { opacity: 0.84; }
+
+/* 9. RESPONSIVE DESIGN */
+@media (max-width: 860px) {
+  .sidebar { width: 64px; padding: 20px 10px; align-items: center; }
+  .sidebar-label, .sidebar-logo-text { display: none !important; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  .results-cols { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 600px) {
+  .stats-grid   { grid-template-columns: 1fr 1fr; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats   { flex-wrap: wrap; gap: 24px !important; }
+  .result-head  { flex-direction: column !important; }
+}
+
+@media (max-width: 420px) {
+  .stats-grid   { grid-template-columns: 1fr; }
+}
